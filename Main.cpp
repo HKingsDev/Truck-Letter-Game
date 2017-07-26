@@ -23,10 +23,24 @@ BITMAP *Tablero_Salir;
 BITMAP *Ayuda_Normal;
 BITMAP *Ayuda_Salir;
 
+BITMAP *Jugar_Normal;
+BITMAP *Jugar_Salir;
+
+BITMAP *Registrar_Normal;
+BITMAP *Registrar_Cancelar;
+BITMAP *Registrar_Aceptar;
+
+
+
 //DELCARACION DE VARIABLES
 bool salida = false;        //VARIABLE BOOLEANA PARA SALIR. SE MANTIENE EN FALSE.
+bool salida1 = false;
 bool salida2 = false; 		//VARIABLE QUE SOLO SERVIRA PARA ENTRAR Y SALIR DE JUGAR,AYUDA,TABLERO
+bool salida3 = false;
+bool salida4 = false;
+bool confirmar = false;
 
+void Menu();
 //___________________________________________FUNCION DE INICIO__________________________________________________________//
 void Inicio()                                               //FUNCION INICIO DECLARACION DE TODOS LOS COMPONENTES PARA QUE ARRANQUE
 {
@@ -46,21 +60,97 @@ void Final()                                                //FUNCION PARA CUAND
   allegro_exit();                                           //SALE DE LA BIBLIOTECA ALLEGRO.
 }
 
+void Registro()
+{
+	while ( !salida4 )                                                     //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
+  {
+    if ( mouse_x > 230 && mouse_x < 325 &&
+    mouse_y > 273 && mouse_y < 296) //LASDIMENCIONES SE CAMBIARAN####
+    {
+      blit(Registrar_Aceptar, buffer, 0, 0, 0, 0, ANCHO, ALTO);
+      if ( mouse_b & 1 )
+      {
+        salida4 = true;
+        confirmar= true;
+      }
+    }
+
+    else if ( mouse_x > 53 && mouse_x < 148 &&
+    mouse_y > 273 && mouse_y < 296) //LASDIMENCIONES SE CAMBIARAN####
+    {
+      blit(Registrar_Cancelar, buffer, 0, 0, 0, 0, ANCHO, ALTO);
+      if ( mouse_b & 1 )
+      {
+        salida4 = true;
+      }
+    }
+
+    //******************************************[NO SELECCIONO NADA]************************************************//
+    else
+    {
+      blit(Registrar_Normal, buffer, 0, 0, 0, 0, ANCHO, ALTO);
+    }
+    masked_blit(Puntero, buffer, 0, 0, mouse_x, mouse_y, 13,22);
+    printf("X: [%d] | Y: [%d] \n",mouse_x,mouse_y);
+    // se muestra todo por pantalla
+    blit(buffer, screen, 0, 0, 0, 0, ANCHO, ALTO);
+    clear(buffer);
+
+  }
+  if (salida4==true)
+  {
+      salida4 = false;
+  }
+
+}
+
 //______________________________________________________________________________________________________________
 void Jugar()
 {
-  while ( !salida2 )                                                      //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
+    salida1 = false;
+  while ( !salida1 )                                                      //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
   {
-	  
+  	if ( mouse_x > 347 && mouse_x < 370 &&
+    mouse_y > 552 && mouse_y < 575) //LASDIMENCIONES SE CAMBIARAN####
+    {
+      blit(Jugar_Salir, buffer, 0, 0, 0, 0, ANCHO, ALTO);
+      if ( mouse_b & 1 )
+      {
+        //salida1 = true;
+        Registro();
+        salida4=false;
+        if(confirmar == true)
+        {
+            salida1 = true;
+        }
+      }
+    }
+    //******************************************[NO SELECCIONO NADA]************************************************//
+    else
+    {
+      blit(Jugar_Normal, buffer, 0, 0, 0, 0, ANCHO, ALTO);
+    }
+    masked_blit(Puntero, buffer, 0, 0, mouse_x, mouse_y, 13,22);
+    printf("X: [%d] | Y: [%d] \n",mouse_x,mouse_y);
+    // se muestra todo por pantalla
+    blit(buffer, screen, 0, 0, 0, 0, ANCHO, ALTO);
+    clear(buffer);
+
+  }
+	if (salida1==true)
+  {
+      Menu();
+      salida1 = false;
   }
 }
+
 //______________________________________________________________________________________________________________
-void Tablero()
+void Tablero()                                                            //FUNCION TABLRO
 {
-  while ( !salida2 )                                                      //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
+  while ( !salida2 )                                                     //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
   {
-if ( mouse_x > 162 && mouse_x < 334 &&
-    mouse_y > 393 && mouse_y < 420) //LASDIMENCIONES SE CAMBIARAN####
+    if ( mouse_x > 347 && mouse_x < 370 &&
+    mouse_y > 552 && mouse_y < 575) //LASDIMENCIONES SE CAMBIARAN####
     {
       blit(Tablero_Salir, buffer, 0, 0, 0, 0, ANCHO, ALTO);
       if ( mouse_b & 1 )
@@ -68,8 +158,6 @@ if ( mouse_x > 162 && mouse_x < 334 &&
         salida2 = true;
       }
     }
-
-
     //******************************************[NO SELECCIONO NADA]************************************************//
     else
     {
@@ -80,22 +168,28 @@ if ( mouse_x > 162 && mouse_x < 334 &&
     // se muestra todo por pantalla
     blit(buffer, screen, 0, 0, 0, 0, ANCHO, ALTO);
     clear(buffer);
-	  
+
+  }
+  if (salida2==true)
+  {
+      Menu();
+      salida2 = false;
   }
 }
-//______________________________________________________________________________________________________________
+
+//______________________________________________________________________________________________________________//
 void Ayuda()
 {
-   while ( !salida2 )                                                      //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
+   while ( !salida3 )                                                      //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
   {
-	  
-if ( mouse_x > 162 && mouse_x < 334 &&
-    mouse_y > 393 && mouse_y < 420) //LASDIMENCIONES SE CAMBIARAN####
+
+if ( mouse_x > 347 && mouse_x < 370 &&
+    mouse_y > 552 && mouse_y < 575) //LASDIMENCIONES SE CAMBIARAN####
     {
       blit(Ayuda_Salir, buffer, 0, 0, 0, 0, ANCHO, ALTO);
       if ( mouse_b & 1 )
       {
-        salida2 = true;
+        salida3 = true;
       }
     }
 
@@ -110,6 +204,11 @@ if ( mouse_x > 162 && mouse_x < 334 &&
     // se muestra todo por pantalla
     blit(buffer, screen, 0, 0, 0, 0, ANCHO, ALTO);
     clear(buffer);
+  }
+  if(salida3 == true)
+  {
+      Menu();
+      salida3 = false;
   }
 }
 //______________________________________________________________________________________________________________
@@ -131,6 +230,13 @@ void Menu()                                                                 //FU
   Ayuda_Normal = load_bitmap("Img/Ayuda/Ayuda_Normal.bmp",NULL);            //CARGA LA IMAGEN DE AYUDA NORMAL
   Ayuda_Salir = load_bitmap("Img/Ayuda/Ayuda_Salir.bmp",NULL);              //CARGA LA IMAGEN DE AYUDA SALIR
 //--------------------------------------------------------------------------//
+  Jugar_Normal = load_bitmap("Img/Jugar/jugar/Jugar_Normal.bmp",NULL);
+  Jugar_Salir = load_bitmap("Img/Jugar/jugar/Jugar_Salir.bmp",NULL);
+
+  Registrar_Normal = load_bitmap("Img/Jugar/salir/Registrar_Normal.bmp",NULL);
+  Registrar_Cancelar = load_bitmap("Img/Jugar/salir/Registrar_Cancelar.bmp",NULL);
+  Registrar_Aceptar = load_bitmap("Img/Jugar/salir/Registrar_Aceptar.bmp",NULL);
+
   while ( !salida )                                                      //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
 	{                                                                    //BOOLEANA Y DESPUES ENTRE AL CICLO
     //*****************************************************[JUGAR]*********************************************//
@@ -141,7 +247,6 @@ void Menu()                                                                 //FU
       if ( mouse_b & 1 )
       {
         Jugar();
-	salida = false;
       }
     }
     //*****************************************************[TABLERO]************************************************//
@@ -152,7 +257,6 @@ void Menu()                                                                 //FU
       if ( mouse_b & 1 )
       {
         Tablero();
-	salida2 = false;
       }
     }
     //*****************************************************[AYUDA]************************************************//
@@ -163,7 +267,6 @@ void Menu()                                                                 //FU
       if ( mouse_b & 1 )
       {
         Ayuda();
-	salida2 = false;
       }
     }
     //**************************************************[SALIR]****************************************************//
