@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-//jsndlqLKKLSm
+
 #define  ANCHO 400                                      //DEFINE LA VARIABLE ANCHO CON UN VALOR FIJO DE 400
 #define ALTO 600                                        //DEFINE LA BARIABLE ALTO CON UN VALOR FIJO DE 600
 //DECLARACION DE VARIABLES DE LAS IMAGENES
@@ -25,6 +25,7 @@ BITMAP *Ayuda_Salir;
 
 //DELCARACION DE VARIABLES
 bool salida = false;        //VARIABLE BOOLEANA PARA SALIR. SE MANTIENE EN FALSE.
+bool salida2 = false; 		//VARIABLE QUE SOLO SERVIRA PARA ENTRAR Y SALIR DE JUGAR,AYUDA,TABLERO
 
 //___________________________________________FUNCION DE INICIO__________________________________________________________//
 void Inicio()                                               //FUNCION INICIO DECLARACION DE TODOS LOS COMPONENTES PARA QUE ARRANQUE
@@ -45,6 +46,18 @@ void Final()                                                //FUNCION PARA CUAND
   allegro_exit();                                           //SALE DE LA BIBLIOTECA ALLEGRO.
 }
 
+//______________________________________________________________________________________________________________
+void Jugar()
+{
+}
+//______________________________________________________________________________________________________________
+void Tablero()
+{
+}
+//______________________________________________________________________________________________________________
+void Ayuda()
+{
+}
 //______________________________________________________________________________________________________________
 
 void Menu()                                                                 //FUNCION DE MENU
