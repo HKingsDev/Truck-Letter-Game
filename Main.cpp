@@ -49,14 +49,68 @@ void Final()                                                //FUNCION PARA CUAND
 //______________________________________________________________________________________________________________
 void Jugar()
 {
+  while ( !salida2 )                                                      //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
+  {
+	  
+  }
 }
 //______________________________________________________________________________________________________________
 void Tablero()
 {
+  while ( !salida2 )                                                      //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
+  {
+if ( mouse_x > 162 && mouse_x < 334 &&
+    mouse_y > 393 && mouse_y < 420) //LASDIMENCIONES SE CAMBIARAN####
+    {
+      blit(Tablero_Salir, buffer, 0, 0, 0, 0, ANCHO, ALTO);
+      if ( mouse_b & 1 )
+      {
+        salida2 = true;
+      }
+    }
+
+
+    //******************************************[NO SELECCIONO NADA]************************************************//
+    else
+    {
+      blit(Tablero_Normal, buffer, 0, 0, 0, 0, ANCHO, ALTO);
+    }
+    masked_blit(Puntero, buffer, 0, 0, mouse_x, mouse_y, 13,22);
+    printf("X: [%d] | Y: [%d] \n",mouse_x,mouse_y);
+    // se muestra todo por pantalla
+    blit(buffer, screen, 0, 0, 0, 0, ANCHO, ALTO);
+    clear(buffer);
+	  
+  }
 }
 //______________________________________________________________________________________________________________
 void Ayuda()
 {
+   while ( !salida2 )                                                      //SE INICIA CON UN WHILE PARA QUE REVISE PRIMERO LA VARIABLE
+  {
+	  
+if ( mouse_x > 162 && mouse_x < 334 &&
+    mouse_y > 393 && mouse_y < 420) //LASDIMENCIONES SE CAMBIARAN####
+    {
+      blit(Ayuda_Salir, buffer, 0, 0, 0, 0, ANCHO, ALTO);
+      if ( mouse_b & 1 )
+      {
+        salida2 = true;
+      }
+    }
+
+
+    //******************************************[NO SELECCIONO NADA]************************************************//
+    else
+    {
+      blit(Ayuda_Normal, buffer, 0, 0, 0, 0, ANCHO, ALTO);
+    }
+    masked_blit(Puntero, buffer, 0, 0, mouse_x, mouse_y, 13,22);
+    printf("X: [%d] | Y: [%d] \n",mouse_x,mouse_y);
+    // se muestra todo por pantalla
+    blit(buffer, screen, 0, 0, 0, 0, ANCHO, ALTO);
+    clear(buffer);
+  }
 }
 //______________________________________________________________________________________________________________
 
@@ -86,7 +140,8 @@ void Menu()                                                                 //FU
       blit(Menu_Jugar, buffer, 0, 0, 0, 0, ANCHO, ALTO);
       if ( mouse_b & 1 )
       {
-        //######//
+        Jugar();
+	salida = false;
       }
     }
     //*****************************************************[TABLERO]************************************************//
@@ -96,7 +151,8 @@ void Menu()                                                                 //FU
       blit(Menu_Tablero, buffer, 0, 0, 0, 0, ANCHO, ALTO);
       if ( mouse_b & 1 )
       {
-        blit(Tablero_Normal, buffer, 0, 0, 0, 0, ANCHO, ALTO); //provicional
+        Tablero();
+	salida2 = false;
       }
     }
     //*****************************************************[AYUDA]************************************************//
@@ -106,7 +162,8 @@ void Menu()                                                                 //FU
       blit(Menu_Ayuda, buffer, 0, 0, 0, 0, ANCHO, ALTO);
       if ( mouse_b & 1 )
       {
-        blit(Ayuda_Normal, buffer, 0, 0, 0, 0, ANCHO, ALTO);                        //provicional????
+        Ayuda();
+	salida2 = false;
       }
     }
     //**************************************************[SALIR]****************************************************//
