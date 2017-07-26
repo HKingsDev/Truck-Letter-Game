@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-
+//jsndlqLKKLSm
 #define  ANCHO 400                                      //DEFINE LA VARIABLE ANCHO CON UN VALOR FIJO DE 400
 #define ALTO 600                                        //DEFINE LA BARIABLE ALTO CON UN VALOR FIJO DE 600
 //DECLARACION DE VARIABLES DE LAS IMAGENES
@@ -50,7 +50,7 @@ void Final()                                                //FUNCION PARA CUAND
 void Menu()                                                                 //FUNCION DE MENU
 {
 //ASIGANACION DE IMAGENES A LAS VARIABLES
-  buffer=create_bitmap(ANCHO,ALTO);                                         //CREA EL BUFFER CON EL TAMAÑO PREDEFINIDO EN EL INICIO
+  buffer=create_bitmap(ANCHO,ALTO);                                         //CREA EL BUFFER CON EL TAMAÃ‘O PREDEFINIDO EN EL INICIO
   Puntero = load_bitmap("Img/Puntero/Puntero.bmp",NULL);                    //CARGA LA IMAGEN DEL PUNTERO DEL RATON
   Menu_Normal=load_bitmap("Img/Menu/Menu_Normal.bmp",NULL);                 //CARGA LA IMAGEN DEL MENU NORMAL
   Menu_Jugar=load_bitmap("Img/Menu/Menu_Jugar.bmp",NULL);                   //CARGA LA IMAGEN DEL MENU JUGAR
